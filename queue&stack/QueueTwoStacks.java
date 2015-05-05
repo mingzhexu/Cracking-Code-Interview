@@ -9,18 +9,19 @@ public class QueueTwoStacks {
 		sk1.push(value);
 	}
 	public int dequeue(){
-		while(sk1 != null){
-			sk2.push(sk1.pop());
+		if(sk2 == null){
+		  while(sk1 != null){
+		    sk2.push(sk1.pop());
+		  }
+		  return sk2.pop();
+		}else{
+		  return sk2.pop();
 		}
-		int v = sk2.pop();
-		while(sk2 != null){
-			sk1.push(sk2.pop());
-		}
-		return v;
 	}
 	public int size(){
-		return sk1.size();
+		return sk1.size() + sk2.size();
 	}
+	
 	public void remove(){
 		while(sk1 != null){
 			sk2.push(sk1.pop());
